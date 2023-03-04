@@ -1,0 +1,121 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --coverage --watchAll=false",
+    "eject": "react-scripts eject",
+    "eslint-test": "npx eslint --ext .tsx,.ts .",
+    "prettier-test": "npx prettier --check .",
+    "stylelint-test": "npx stylelint \"src/**/*.*css\"",
+    "prettier-fix": "npx prettier --write .",
+    "codestyle-test": "npm run prettier-test && npm run eslint-test && npm run stylelint-test",
+    "precommit": "npm run codestyle-test && npm run test"
+  },
+  "stylelint": {
+    "customSyntax": "postcss-scss",
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-standard-scss"
+    ],
+    "rules": {
+      "block-no-empty": null,
+      "linebreaks": "unix",
+      "color-hex-case": "upper",
+      "color-hex-length": "long",
+      "value-no-vendor-prefix": [
+        true,
+        {
+          "ignoreValues": [
+            "box"
+          ]
+        }
+      ],
+      "selector-class-pattern": null,
+      "selector-pseudo-class-no-unknown": [
+        true,
+        {
+          "ignorePseudoClasses": [
+            "global"
+          ]
+        }
+      ]
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "prettier"
+    ],
+    "rules": {
+      "react-hooks/exhaustive-deps": "off",
+      "newline-before-return": "error",
+      "eol-last": "off",
+      "curly": "error",
+      "linebreak-style": [
+        "error"
+      ],
+      "testing-library/no-unnecessary-act": "off",
+      "testing-library/no-node-access": "off",
+      "padding-line-between-statements": [
+        "error",
+        {
+          "blankLine": "always",
+          "prev": "block-like",
+          "next": "block-like"
+        },
+        {
+          "blankLine": "always",
+          "prev": "*",
+          "next": "if"
+        }
+      ]
+    }
+  },
+  "prettier": {
+    "printWidth": 100
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "1.8.5",
+    "axios": "0.27.2",
+    "classnames": "2.3.1",
+    "nanoid": "3.3.4",
+    "postcss-scss": "4.0.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "7.43.2",
+    "react-redux": "8.0.2",
+    "react-router-dom": "6.8.1",
+    "react-scripts": "5.0.1",
+    "sass": "1.54.8",
+    "typescript": "4.8.2",
+    "web-vitals": "2.1.4"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.45",
+    "@types/react": "18.0.18",
+    "@types/react-dom": "18.0.6",
+    "eslint": "8.22.0",
+    "eslint-config-prettier": "8.5.0",
+    "http-proxy-middleware": "2.0.6",
+    "prettier": "2.7.1",
+    "stylelint": "14.11.0",
+    "stylelint-config-standard": "28.0.0",
+    "stylelint-config-standard-scss": "5.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+.iconContainer {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.clickable {
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,14 @@
+@import "src/styles/colors.module";
+
+.fieldLabel {
+  display: flex;
+  justify-content: space-between;
+
+  .label {
+    color: $color-primary-20;
+    flex-shrink: 0;
+    padding: 4px;
+    margin-bottom: 4px;
+    min-width: 120px;
+  }
+}
