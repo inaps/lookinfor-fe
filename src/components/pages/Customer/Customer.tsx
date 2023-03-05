@@ -13,8 +13,9 @@ export const Customer = () => {
   const [isCreated, setIsCreated] = useState(false);
   const form = useForm<NewRequest>();
 
-  const onSubmit = (form: NewRequest) => {
-    requestService.createRequest(form);
+  const onSubmit = (formData: NewRequest) => {
+    requestService.createRequest(formData);
+    form.reset();
     setIsCreated(true);
   };
 
@@ -38,6 +39,7 @@ export const Customer = () => {
       <Form id={formId} onSubmit={onSubmit} form={form}>
         <TextField id="name" label="Название" />
         <TextField id="category" label="Категория" />
+        <TextField id="contacts" label="Связь со мной" />
       </Form>
       <Button submit primary formId={formId} className={styles.buttonSubmit}>
         Ищу!

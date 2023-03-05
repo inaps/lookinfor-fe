@@ -9,8 +9,14 @@
   align-items: center;
   
   .title {
-    color: $color-primary-10;
-    font-weight: 700;
-    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    .text {
+      color: $color-primary-10;
+      font-weight: 700;
+      font-size: 24px;
+    }
   }
 }

@@ -3,6 +3,7 @@
 .fieldLabel {
   display: flex;
   justify-content: space-between;
+  gap: 24px;
 
   .label {
     color: $color-primary-20;
