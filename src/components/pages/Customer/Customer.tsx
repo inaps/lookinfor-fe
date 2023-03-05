@@ -1,19 +1,37 @@
-import React from "react";
-import { FieldValues, useForm } from "react-hook-form";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { requestService } from "../../../services/requestsService";
 import { Form } from "../../uikit/Form";
 import { TextField } from "../../uikit/fields/TextField";
 import { Button } from "../../uikit/Button";
+import { NewRequest } from "../../../types/common";
 import styles from "./Customer.module.scss";
 
 const formId = "form";
 
 export const Customer = () => {
-  const form = useForm();
+  const [isCreated, setIsCreated] = useState(false);
+  const form = useForm<NewRequest>();
 
-  const onSubmit = (form: FieldValues) => {
+  const onSubmit = (form: NewRequest) => {
     requestService.createRequest(form);
+    setIsCreated(true);
   };
+
+  const resetCreatedStatus = () => {
+    setIsCreated(false);
+  };
+
+  if (isCreated) {
+    return (
+      <div className={styles.createdRequest}>
+        <span className={styles.message}>Запрос создан!</span>
+        <Button primary onClick={resetCreatedStatus} className={styles.buttonRepeatRequest}>
+          Ищете что-нибудь ещё?
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.form}>
@@ -21,7 +39,7 @@ export const Customer = () => {
         <TextField id="name" label="Название" />
         <TextField id="category" label="Категория" />
       </Form>
-      <Button submit formId={formId} className={styles.buttonSubmit}>
+      <Button submit primary formId={formId} className={styles.buttonSubmit}>
         Ищу!
       </Button>
     </div>

@@ -23,6 +23,10 @@ export const userSlice = createSlice({
       state.id = action.payload.id;
       state.role = action.payload.role;
     },
+    logout: (state) => {
+      state.id = initialState.id;
+      state.role = initialState.role;
+    },
   },
 });
 

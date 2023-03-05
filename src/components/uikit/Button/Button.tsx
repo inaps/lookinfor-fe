@@ -9,7 +9,10 @@ type Props = {
   submit?: boolean;
   className?: string;
   isDisabled?: boolean;
-  type?: "text" | "default";
+
+  primary?: boolean;
+  secondary?: boolean;
+  text?: boolean;
 };
 
 export const Button: React.FC<Props> = ({
@@ -18,8 +21,10 @@ export const Button: React.FC<Props> = ({
   className,
   children,
   isDisabled = false,
+  text,
   submit,
-  type = "default",
+  primary,
+  secondary,
   ...props
 }) => {
   const handleClick = (event: React.SyntheticEvent) => {
@@ -28,10 +33,16 @@ export const Button: React.FC<Props> = ({
 
   return (
     <button
+      key={formId}
       form={formId}
       type={submit ? "submit" : "button"}
       disabled={isDisabled}
-      className={cn(styles.button, className, type && styles[type])}
+      className={cn(styles.button, className, {
+        [styles.primary]: primary,
+        [styles.secondary]: secondary,
+        [styles.text]: text,
+        // type && styles[type],
+      })}
       onClick={handleClick}
       {...props}
     >

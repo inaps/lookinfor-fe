@@ -9,20 +9,30 @@
   padding: 8px 16px;
   border-radius: 4px;
   height: 36px;
-  background: $color-primary-20;
   border: none;
-  color: $color-white;
   
-  &.default {
+  &.primary {
+    background: $color-primary-20;
+    color: $color-white;
+  
     &:hover {
       background: $color-primary-10;
+    }
+  }
+  
+  &.secondary {
+    color: $color-primary-20;
+    border: 1px solid $color-stroke-10;
+  
+    &:hover {
+      background: $color-background-20;
     }
   }
   
   &.text {
     background: none;
     color: $color-primary-20;
-  
+    
     &:hover {
       color: $color-primary-10;
     }

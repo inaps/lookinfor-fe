@@ -1,9 +1,23 @@
 .form {
   display: flex;
   flex-direction: column;
-  align-items: end;
+  align-items: flex-end;
   width: 100%;
   max-width: 600px;
+}
+
+.createdRequest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  .message {
+    font-size: 20px;
+  }
+  
+  .buttonRepeatRequest {
+    margin-top: 16px;
+  }
 }
 
 .buttonSubmit {
