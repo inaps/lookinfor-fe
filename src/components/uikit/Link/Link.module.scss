@@ -1,0 +1,10 @@
+@import "src/styles/colors.module";
+
+.link {
+  color: $color-primary-20;
+  text-decoration: none;
+  
+  &:hover {
+	color: $color-warning-50;
+  }
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import cn from "classnames";
 import styles from "./TextField.module.scss";
 import { IconComponent } from "../../Icon";
@@ -8,7 +8,7 @@ import { UseFormRegister } from "react-hook-form/dist/types/form";
 
 type SelfProps = {
   id: string;
-  label: string;
+  label?: string;
   isRequired?: boolean;
   isClearable?: boolean;
   className?: string;
@@ -35,16 +35,29 @@ export const TextField: React.FC<Props> = ({
   placeholder,
   label,
 }) => {
-  return (
-    <FieldLabel label={label} className={className}>
-      <div className={cn(styles.inputContainer, className)}>
-        <input
-          placeholder={placeholder}
-          className={cn(styles.input, { [styles.hasError]: error })}
-          {...register?.(id, { required: isRequired })}
-        />
-      </div>
-      {error && <span className={styles.errorMessage}>Обязательное поле</span>}
-    </FieldLabel>
+  const renderInput = useCallback(
+    () => (
+      <>
+        <div className={cn(styles.inputContainer, className)}>
+          <input
+            placeholder={placeholder}
+            className={cn(styles.input, { [styles.hasError]: error })}
+            {...register?.(id, { required: isRequired })}
+          />
+        </div>
+        {error && <span className={styles.errorMessage}>Обязательное поле</span>}
+      </>
+    ),
+    [error, className, register]
   );
+
+  if (label) {
+    return (
+      <FieldLabel label={label} className={className}>
+        {renderInput()}
+      </FieldLabel>
+    );
+  }
+
+  return renderInput();
 };

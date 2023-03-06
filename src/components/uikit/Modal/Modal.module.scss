@@ -17,11 +17,9 @@
 .modal {
   display: flex;
   flex-direction: column;
-  min-width: 500px;
   max-height: 80%;
   background: white;
   border-radius: 8px;
-  border: 1px solid $color-stroke-30;
   box-shadow: -1px 2px 12px rgba($color-black, 0.3);
   overflow: hidden;
 }
@@ -32,7 +30,6 @@
   align-items: center;
   padding: 20px;
   background: $color-background-10;
-  border-bottom: 1px solid $color-stroke-30;
 
   .title {
     font-weight: 500;
@@ -45,20 +42,4 @@
   padding: 32px 48px;
 }
 
-.text {
-  font-size: 12px;
-}
 
-.footer {
-  display: flex;
-  padding: 12px 24px;
-  background: $color-background-20;
-  border-top: 1px solid $color-stroke-30;
-  justify-content: flex-end;
-  gap: 8px;
-  justify-self: flex-end;
-  
-  &.actionAlign {
-    justify-content: space-between;
-  }
-}
